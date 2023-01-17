@@ -1,15 +1,16 @@
 // import functions and grab DOM elements
-import { renderMushroom, renderFriend } from './render-utils.js';
+import { renderMushroom, renderFriend, renderBerry } from './render-utils.js';
 
 const friendsEl = document.querySelector('.friends');
 const friendInputEl = document.getElementById('friend-input');
 const mushroomsEl = document.querySelector('.mushrooms');
+const berriesEl = document.querySelector('.berries');
 const addMushroomButton = document.getElementById('add-mushroom-button');
 const addFriendButton = document.getElementById('add-friend-button');
 // initialize state
 
 let mushroomCount = 3;
-
+let berryCount = 3;
 const friendData = [
     {
         name: 'Erich',
@@ -31,12 +32,23 @@ const friendData = [
 
 addMushroomButton.addEventListener('click', () => {
     if (Math.random() > 0.5) {
-        alert('found a mushroom!');
+        if (Math.random() > 0.5) {
+            alert('found a mushroom!');
 
-        mushroomCount++;
-        displayMushrooms();
+            mushroomCount++;
+            displayMushrooms();
+        } else {
+            alert('no luck!');
+        }
     } else {
-        alert('no luck!');
+        if (Math.random() > 0.5) {
+            alert('found a berry!');
+
+            berryCount++;
+            displayBerries();
+        } else {
+            alert('no luck!');
+        }
     }
 });
 
@@ -95,6 +107,14 @@ function displayMushrooms() {
         mushroomsEl.append(mushroomEl);
     }
 }
+function displayBerries() {
+    berriesEl.textContent = '';
+    for (let i = 0; i < berryCount; i++) {
+        const berryEl = renderBerry();
+        berriesEl.append(berryEl);
+    }
+}
 
 displayFriends();
 displayMushrooms();
+displayBerries();
