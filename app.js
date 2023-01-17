@@ -78,6 +78,8 @@ function displayMushrooms() {
 
     for (let i = 0; i < mushroomCount; i++) {
         // for each mushroom in your mushroom state, render and append a mushroom
+        const mushroomEl = renderMushroom();
+        mushroomsEl.append(mushroomEl);
     }
 }
 
