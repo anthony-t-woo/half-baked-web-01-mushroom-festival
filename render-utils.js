@@ -14,13 +14,14 @@ export function renderBerry() {
 export function renderFriend(friend) {
     const div = document.createElement('div');
     const nameEl = document.createElement('p');
+
     const emojiEl = document.createElement('p');
 
     div.classList.add('friend');
     nameEl.classList.add('name');
     emojiEl.classList.add('emoji');
 
-    nameEl.textContent = friend.name;
+    nameEl.textContent = `${friend.name}${friend.preference}`;
 
     if (friend.satisfaction === 1) {
         emojiEl.textContent = '😒';

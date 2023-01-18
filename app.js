@@ -10,23 +10,27 @@ const addFriendButton = document.getElementById('add-friend-button');
 // initialize state
 
 let mushroomCount = 3;
-let berryCount = 3;
+let berryCount = 1;
 const friendData = [
     {
         name: 'Erich',
         satisfaction: 2,
+        preference: '🍓',
     },
     {
         name: 'Sarah',
         satisfaction: 3,
+        preference: '🍄',
     },
     {
         name: 'Missael',
         satisfaction: 1,
+        preference: '🍓',
     },
     {
         name: 'Soraya',
         satisfaction: 2,
+        preference: '🍄',
     },
 ];
 
@@ -54,12 +58,29 @@ addMushroomButton.addEventListener('click', () => {
 
 addFriendButton.addEventListener('click', () => {
     // get the name from the input
-    const invitedFriend = friendInputEl.value;
     // create a new friend object
+    const invitedFriend = friendInputEl.value;
     const friend = {
         name: invitedFriend || `rando #${Math.ceil(Math.random() * 100)}`,
         satisfaction: 1,
+        preference: Math.random() > 0.5 ? '🍄' : '🍓',
     };
+    // if (Math.random() > 0.5) {
+    //     const invitedFriend = friendInputEl.value;
+    //     friend = {
+    //         name: invitedFriend || `rando #${Math.ceil(Math.random() * 100)}`,
+    //         satisfaction: 1,
+    //         preference: '🍄',
+    //     };
+    // } else {
+    //     const invitedFriend = friendInputEl.value;
+    //     friend = {
+    //         name: invitedFriend || `rando #${Math.ceil(Math.random() * 100)}`,
+    //         satisfaction: 1,
+    //         preference: '🍓',
+    //     };
+    // }
+
     // push it into the friends state array, passed in as an argument
     friendData.push(friend);
     // clear out the input element
@@ -80,17 +101,28 @@ function displayFriends() {
         //     add an event listener to each friend
         friendEl.addEventListener('click', () => {
             // and if the friend's satisfaction level is below 3 and you have mushrooms left
-
-            if (mushroomCount === 0) {
-                alert('Go mushroom hunting to get more to share with your friends');
-            }
-            if (friend.satisfaction < 3 && mushroomCount > 0) {
-                friend.satisfaction++;
-                mushroomCount--;
-                // increment the friends satisfaction and decrement your mushrooms
-                // clear out and display the updated friends and mushrooms (hint: displayFriends, displayMushrooms)
-                displayFriends();
-                displayMushrooms();
+            if (friend.preference === '🍄') {
+                if (mushroomCount === 0) {
+                    alert('Go foraging to find more mushrooms');
+                }
+                if (friend.satisfaction < 3 && mushroomCount > 0) {
+                    friend.satisfaction++;
+                    mushroomCount--;
+                    // increment the friends satisfaction and decrement your mushrooms
+                    // clear out and display the updated friends and mushrooms (hint: displayFriends, displayMushrooms)
+                    displayFriends();
+                    displayMushrooms();
+                }
+            } else if (friend.preference === '🍓') {
+                if (berryCount === 0) {
+                    alert('Go forging to find more berries');
+                }
+                if (friend.satisfaction < 3 && berryCount > 0) {
+                    friend.satisfaction++;
+                    berryCount--;
+                    displayFriends();
+                    displayBerries();
+                }
             }
         });
 
