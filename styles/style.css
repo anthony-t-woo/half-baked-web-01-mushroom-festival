@@ -217,6 +217,13 @@ label {
     font-size: 2rem;
 }
 
+.berries {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: flex-end;
+    position: relative;
+    bottom: 200px;
+}
 .berry {
     width: 100px;
     height: 100px;

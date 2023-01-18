@@ -10,7 +10,7 @@ const addFriendButton = document.getElementById('add-friend-button');
 // initialize state
 
 let mushroomCount = 3;
-let berryCount = 1;
+let berryCount = 2;
 const friendData = [
     {
         name: 'Erich',
