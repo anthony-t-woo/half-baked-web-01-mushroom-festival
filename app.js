@@ -65,22 +65,6 @@ addFriendButton.addEventListener('click', () => {
         satisfaction: 1,
         preference: Math.random() > 0.5 ? '🍄' : '🍓',
     };
-    // if (Math.random() > 0.5) {
-    //     const invitedFriend = friendInputEl.value;
-    //     friend = {
-    //         name: invitedFriend || `rando #${Math.ceil(Math.random() * 100)}`,
-    //         satisfaction: 1,
-    //         preference: '🍄',
-    //     };
-    // } else {
-    //     const invitedFriend = friendInputEl.value;
-    //     friend = {
-    //         name: invitedFriend || `rando #${Math.ceil(Math.random() * 100)}`,
-    //         satisfaction: 1,
-    //         preference: '🍓',
-    //     };
-    // }
-
     // push it into the friends state array, passed in as an argument
     friendData.push(friend);
     // clear out the input element
